@@ -25,11 +25,10 @@ void swap(int &a, int &b) {
 }
 
 void sort(int a[],int n) {
-    int i,j,min;
     for(int i=0; i<n-1; i++) {
-        min = i;
-        for(int j=i+1; j<n; j++) {
-            if(a[j]<a[min]) {
+        int min = i;
+        for(int j=i+1; j<=n-1; j++) {
+            if(a[j] < a[min]) {
                 min = j;
             }
         }
@@ -37,11 +36,40 @@ void sort(int a[],int n) {
     }
 }
 
+void sort_reverse(int a[], int n) {
+    for(int i=0; i<n-1; i++) {
+        int max = i;
+        for(int j=i+1; j<=n-1; j++) {
+            if(a[max] < a[j]) {
+                max = j;
+            }
+        }
+        swap(a[max],a[i]);
+    }
+}
+
 int main() {
     int a[MAX];
     int n;
-    nhap(a,n); 
-    sort(a,n);
-    xuat(a,n);
+    char ctn;
+    do {
+        nhap(a,n); 
+        int choose;
+        cout << "1. Sap xep tu nho -> lon" << endl;
+        cout << "2. Sap xep tu lon -> nho" << endl;
+        cout << "Lua chon: ";
+        cin >> choose;
+        if(choose==1) {
+            sort(a,n);
+            xuat(a,n);
+        } else if(choose==2) {
+            sort_reverse(a,n);
+            xuat(a,n);
+        } else {
+            cout << "Lua chon khong hop le!" << endl;
+        }
+        cout << "Tiep tuc? (y/n) : ";
+        cin >> ctn;
+    } while(ctn!='n');
     return 0;
 }
