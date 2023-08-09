@@ -167,7 +167,7 @@ int main() {
             case 3: {
                 int x;
                 cout << "Gia tri can them: ";
-                cin >> x;
+                cin >> x; 
                 insertFirst(head,x);
             }
             break;
